@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+{% load static %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+     <title>{% block title %}{% endblock %}</title>
+
+    <!-- Custom fonts for this template -->
+    <!--<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">-->
+    <!-- <link href="{% static 'css/all.min.css' %}" rel="stylesheet" type="text/css">-->
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this page -->
+     <!--<link href="{% static 'css/dataTables.bootstrap4.min.css' %}" rel="stylesheet">-->
+
+</head>
+
+
+
+<body>
+<header>
+<div class="px-3 py-2 bg-dark text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center my-2 my-lg-0 me-lg-auto text-white text-decoration-none"><h3 style="color:#35dba7; margin-bottom:0px; margin-right:15px ">Network Monitoring & Data Systems</h3>
+            <svg style="color:#35dba7" xmlns="http://www.w3.org/2000/svg" width="32" height="40" fill="currentColor" class="bi bi-ethernet" viewBox="0 0 16 16">
+  <path d="M14 13.5v-7a.5.5 0 0 0-.5-.5H12V4.5a.5.5 0 0 0-.5-.5h-1v-.5A.5.5 0 0 0 10 3H6a.5.5 0 0 0-.5.5V4h-1a.5.5 0 0 0-.5.5V6H2.5a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 .5-.5ZM3.75 11h.5a.25.25 0 0 1 .25.25v1.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-1.5a.25.25 0 0 1 .25-.25Zm2 0h.5a.25.25 0 0 1 .25.25v1.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-1.5a.25.25 0 0 1 .25-.25Zm1.75.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v1.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-1.5ZM9.75 11h.5a.25.25 0 0 1 .25.25v1.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-1.5a.25.25 0 0 1 .25-.25Zm1.75.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v1.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-1.5Z"/>
+  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2ZM1 2a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2Z"/></svg>
+          </a>
+
+
+
+        </div>
+      </div>
+    </div>
+
+</header>
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+                 <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                    <!-- Поиск -->
+                    <span style="color: #4e73df">Быстрый поиск устройств</span>
+                    <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search" action="{% url 'searchquery' %}" method="get">
+                        <div class="input-group">
+
+                            <input type="search" class="form-control bg-light border-1 small" placeholder="Search..."
+                                aria-label="Search" aria-describedby="basic-addon2" name="search">
+
+
+                        </div>
+
+                    </form>
+                    <span>Вы вошли в систему как сетевой администратор</span>
+                    <div class="btn-group me-2">
+
+            <a href="{% url 'logout' %}" class="btn btn-sm btn-outline-secondary" role="button" aria-pressed="true">Logout</a>
+          </div>
+
+                </nav>
+
+                <!-- End of Topbar -->
+                {% block body %}
+                {% endblock %}
+
+            </div>
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright © KrasnovAA 2022</span>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+<script type="text/javascript">
+function backupjs(){
+$.ajax({
+  url:"backupjs",
+  type:"GET",
+  dataType:"json",
+  success: function (data) {
+    console.log(data)
+    data.forEach(function(item, index, array) {
+  //console.log(item)
+
+
+
+});
+
+    }
+  });
+}
+
+$(document).ready(function(){
+    backupjs();
+    setInterval('backupjs()',1200000);//60000 ms = 1 min
+});
+
+</script>
+
+
+
+
+<!-- Bootstrap core JavaScript-->
+
+
+</body>
+</html>

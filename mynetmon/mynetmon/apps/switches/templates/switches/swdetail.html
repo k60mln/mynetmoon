@@ -1,0 +1,250 @@
+{% extends 'switches/base.html' %}
+{% load static %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid">
+  <div class="row">
+    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse" >
+      <div class="position-sticky pt-3">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'home' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+              Главная
+            </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'switchlist' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file" aria-hidden="true"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
+              Список устройств
+            </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'createsw' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart" aria-hidden="true"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+              Добавить устройство
+            </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'tituls' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              Титула
+            </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
+              Категории
+            </a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'backup' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-layers" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              Бекап
+            </a></li>
+        </ul>
+
+
+        <ul class="nav flex-column mb-2">
+          <li class="nav-item">
+              <a class="nav-link" href="{% url 'logout' %}">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                Выйти
+              </a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2" style="color:green">{{ swdetail.label }}</h1><h1 class="h2" style="color:green">{{ swdetail.fullmodel }}</h1>
+
+      </div>
+
+
+      <div class="pb-2">
+              <div class="card h-100 pb-">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Об устройстве</h6>
+                </div>
+                <div class="card-body pb-0">
+                  <div class="row">
+
+
+                  </div>
+                  <div class="mx-ncard">
+                    <div class="table-responsive scrollbar">
+                      <table class="table fs--1 mb-0 overflow-hidden">
+                        <tbody class="bg-100 text-800">
+                          <tr>
+                            <th class="text-nowrap">Имя устройства</th>
+                            <td class="text-nowrap text-end">{{ swdetail.label }}</td>
+                            <th class="text-nowrap text-end">Полная модель устройства</th>
+                             <td class="text-nowrap text-end">{{ swdetail.fullmodel }}</td>
+                          </tr>
+
+
+                          <tr>
+                            <th class="text-truncate text-end">Статус устройства</th>
+
+                            <td class="text-truncate text-end" id="{{ switch.id }}">{{ swdetail.status }}</td>
+
+                            <th class="text-truncate text-end">Локация установки</th>
+                            <td class="text-truncate text-end">{{ swdetail.location }}</td>
+                          </tr>
+                          <tr>
+                            <th class="text-truncate">IP адрес</th>
+                            <td class="text-truncate text-end">{{ swdetail.ipaddr }}</td>
+                            <th class="text-truncate text-end">Серийный №</th>
+                            <td class="text-truncate text-end">{{ swdetail.serial }}</td>
+                          </tr>
+                          <tr>
+                            <th class="text-truncate">Маска</th>
+                            <td class="text-truncate text-end">{{ swdetail.mask }}</td>
+                            <th class="text-truncate text-end">Версия релиза</th>
+                            <td class="text-truncate text-end">{{ swdetail.reliz }}</td>
+                          </tr>
+                          <tr>
+                            <th class="text-truncate">Модель устройства</th>
+                            <td class="text-truncate text-end">{{ swdetail.model }}</td>
+                            <th class="text-truncate text-end">Количество портов</th>
+                            <td class="text-truncate text-end">{{ swdetail.ports }}</td>
+                          </tr>
+                          <tr>
+                            <th class="text-truncate">Категория</th>
+                            <td class="text-truncate text-end">{{ swdetail.category }}</td>
+                            <th class="text-truncate text-end">Контакты</th>
+                            <td class="text-truncate text-end">{{ swdetail.contact }}</td>
+                          </tr>
+                          <tr>
+                            <th class="text-truncate">Титул</th>
+                            <td class="text-truncate text-end">{{ swdetail.tit }}</td>
+                            <th class="text-truncate text-end">Файл прошивки</th>
+                            <td class="text-truncate text-end">{{ swdetail.binfile }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+      </div>
+      <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Заметки</h6>
+            </div>
+            <div class="card-body">
+                <p>{{ swdetail.notes }}</p>
+            </div>
+      </div>
+
+      <div class="card shadow mb-4" id="config">
+            <!-- Card Header - Accordion -->
+            <a href="#collapseCardExample" class="d-block card-header py-3 collapsed" data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseCardExample">
+                <h6 class="m-0 font-weight-bold text-primary">Конфигурация устройства</h6>
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse" id="collapseCardExample" style="">
+                <div class="card-body config">
+
+
+
+                  <button type="button" name="button" class="get-config" data-marker="{{ swdetail.ipaddr }}" data-pk="{{ swdetail.pk}}">Получить конфиг</button>
+                    <!--<pre>{{ swdetail.cfg|safe }}</pre>-->
+                </div>
+            </div>
+      </div>
+
+      <script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+
+      <script>
+        $(function () {
+            $(".card-body").on("click", ".get-config", function () {
+            var ip = this.dataset.marker;
+            var pk = this.dataset.pk;
+              $.ajax({
+                      url: "{% url 'getconfig' %}",
+                      type:"GET",
+                      dataType:"json",
+                      data: {"ip": ip, "pk": pk},
+                      success: function(data) {
+                        var config = document.querySelector('.config');
+
+                        config.innerHTML = "<pre>"+ data.rep +"</pre>";
+
+                        //console.log(data.rep);
+
+                      }
+                  })
+
+            });
+        });
+
+      </script>
+      <script type="text/javascript">
+function show(){
+$.ajax({
+  url:"/api/pingdetail",
+  type:"GET",
+  dataType:"json",
+  success: function (data) {
+    console.log(data)
+    data.forEach(function(item, index, array) {
+  //console.log(item)
+
+  var status = document.getElementById(item.id);
+  if(item.pingdetail == 'True'){
+    status.innerHTML="connection";
+    }
+    else {
+      status.innerHTML="no connection";
+    }
+
+});
+
+    }
+  });
+}
+
+$(document).ready(function(){
+    show();
+    setInterval('show()',15000);//60000 ms = 1 min
+});
+
+</script>
+
+
+
+      <div class="card shadow mb-5" id="#portstatus">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Статус и конфигурация интерфейсов</h6>
+            </div>
+            <div class="card-body">
+                <pre>{{ swdetail.interfaces }}</pre>
+            </div>
+      </div>
+      <div class="card shadow mb-6" id="logg">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Журнал действий</h6>
+            </div>
+            <div class="card-body">
+                <pre>{{ swdetail.logs }}</pre>
+            </div>
+      </div>
+
+
+
+    </main>
+  </div>
+</div>
+
+<script src="{% static 'js/jquery-3.5.0.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+
+
+
+
+
+
+
+{% endblock %}
